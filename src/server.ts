@@ -2,6 +2,7 @@ import express, { Express, Request, Response } from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import connectDB from './config/database';
+import { Project } from './models';
 
 // Load environment variables
 dotenv.config();
@@ -32,6 +33,30 @@ app.get('/api/health', (req: Request, res: Response) => {
     timestamp: new Date().toISOString()
   });
 });
+
+// app.post('/api/test/project', async (req: Request, res: Response) => {
+//   try {
+//     const testProject = new Project({
+//       title: "3D Portfolio Website",
+//       description: "Interactive portfolio with 3D character navigation",
+//       technologies: ["React", "TypeScript", "Three.js", "Node.js"],
+//       githubUrl: "https://github.com/rishabh16398/3d-portfolio",
+//       featured: true
+//     });
+
+//     await testProject.save();
+    
+//     res.status(201).json({
+//       message: 'Test project created!',
+//       project: testProject
+//     });
+//   } catch (error: any) {
+//     res.status(400).json({
+//       message: 'Error creating project',
+//       error: error.message
+//     });
+//   }
+// });
 
 // Start server
 const startServer = async () => {
